@@ -14,17 +14,24 @@ namespace Game
 
         public CryptoGenerator()
         {
-            key = new byte[32];
+            InitializeCrypto();
+        }
+
+        private void InitializeCrypto()
+        {
+            key = new byte[32]; 
             using (var rng = new RNGCryptoServiceProvider())
             {
-                rng.GetBytes(key);
+                rng.GetBytes(key); 
             }
             hmac = new HMACSHA256(key);
         }
 
         public string GenerateHMAC(string message)
         {
-            byte[] hash = hmac.ComputeHash(Encoding.UTF8.GetBytes(message));
+            InitializeCrypto(); 
+            byte[] messageBytes = Encoding.UTF8.GetBytes(message);
+            byte[] hash = hmac.ComputeHash(messageBytes);
             return BitConverter.ToString(hash).Replace("-", "").ToUpper();
         }
 
@@ -33,4 +40,5 @@ namespace Game
             return BitConverter.ToString(key).Replace("-", "").ToUpper();
         }
     }
+
 }

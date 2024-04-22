@@ -18,6 +18,7 @@ namespace Game
 
             do
             {
+                Console.WriteLine("\n================== New Game ==================\n");
                 string computerChoice = options.GetRandomMove();
                 string hmac = crypto.GenerateHMAC(computerChoice);
 
