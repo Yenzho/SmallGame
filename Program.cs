@@ -14,6 +14,12 @@ namespace Game
                 return;
             }
 
+            if (args.Distinct().Count() != args.Length)
+            {
+                Console.WriteLine("Error: Duplicate moves are not allowed. Each move must be unique.");
+                return;
+            }
+
             Console.WriteLine("Welcome to the extended version of Rock, Paper, Scissors!");
 
             List<string> moves = new List<string>(args);
