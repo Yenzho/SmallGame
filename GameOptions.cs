@@ -20,5 +20,4 @@ namespace Game
             return Options[index];
         }
     }
-
 }

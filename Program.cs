@@ -8,11 +8,15 @@ namespace Game
     {
         static void Main(string[] args)
         {
+            if (args.Length < 3 || args.Length % 2 == 0)
+            {
+                Console.WriteLine("Error: An odd number of moves greater than or equal to 3 must be provided.");
+                return;
+            }
+
             Console.WriteLine("Welcome to the extended version of Rock, Paper, Scissors!");
 
-            int numberOfMoves = Moves.GetNumberOfMoves();
-            List<string> moves = Moves.GetMoves(numberOfMoves);
-
+            List<string> moves = new List<string>(args);
             GameOptions options = new GameOptions(moves);
             CryptoGenerator crypto = new CryptoGenerator();
 

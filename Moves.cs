@@ -8,36 +8,15 @@ namespace Game
 {
     public class Moves
     {
-        public static int GetNumberOfMoves()
+        public static List<string> GetMovesFromArgs(string[] args)
         {
-            int number;
-            do
+            if (args.Length < 3 || args.Length % 2 == 0)
             {
-                Console.WriteLine("Enter an odd number of moves, minimum 3:");
-                if (!int.TryParse(Console.ReadLine(), out number) || number < 3 || number % 2 == 0)
-                {
-                    Console.WriteLine("Invalid number. Please enter an odd number greater than or equal to 3.");
-                }
-                else
-                {
-                    return number;
-                }
-            } while (true);
-        }
-
-        public static List<string> GetMoves(int numberOfMoves)
-        {
-            HashSet<string> moves = new HashSet<string>();
-            while (moves.Count < numberOfMoves)
-            {
-                Console.WriteLine($"Enter a unique name for move {moves.Count + 1} of {numberOfMoves}:");
-                string move = Console.ReadLine().Trim();
-                if (!moves.Add(move))
-                {
-                    Console.WriteLine("This move has already been added. Please enter a different one.");
-                }
+                Console.WriteLine("Error: Invalid number of moves provided. Please provide an odd number of moves greater than or equal to 3.");
+                return null; 
             }
-            return new List<string>(moves);
+
+            return new List<string>(args);
         }
     }
 }
