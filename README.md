@@ -1,7 +1,7 @@
 # RockPaperScissors
  
 ## Description:
-### This is a test project that represents extended version the Rock-Paper-Scissors game.
+### This is a test project that represents extended version of the Rock-Paper-Scissors game.
 
 ## How to play:
 ### 1. Fork this repo
